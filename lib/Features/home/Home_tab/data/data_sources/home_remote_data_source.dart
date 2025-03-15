@@ -21,6 +21,7 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
           // "Authorization":token,
         })).get(ApiConstant.banner);
     if (response.statusCode == 200) {
+      print(response);
       return List<BannerModel>.from((response.data["data"]["banners"] as List)
           .map((e) => BannerModel.fromJson(e)));
     } else {
