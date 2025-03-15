@@ -29,10 +29,10 @@ class CustomTextField extends StatelessWidget {
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20), // Adjust padding for increased height
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(26),
+            borderRadius: BorderRadius.circular(18),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(26),
+            borderRadius: BorderRadius.circular(18),
             borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: hintText,

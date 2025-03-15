@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // home: HomeScreen(),
       routes: {
         LoginScreen.routeName:(_)=>LoginScreen(),
         SignUpScreen.routeName:(_)=>SignUpScreen(),

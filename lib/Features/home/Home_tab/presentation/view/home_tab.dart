@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/banner_component.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/build_home_search.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/categories_component.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/product_component.dart';
+
+class HomeTab extends StatelessWidget {
+  const HomeTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var height= MediaQuery.of(context).size.height;
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: height*0.035,),
+            const BuildHomeSearch(),
+            SizedBox(height: height*0.035,),
+            BannerComponent(),
+            SizedBox(height: height*0.02,),
+            const Text("Categories", style:
+            TextStyle(fontSize: 24, fontWeight: FontWeight.w600),),
+            const CategoriesComponent(),
+            SizedBox(height: height*0.02,),
+            const Text("New Products", style:
+            TextStyle(fontSize: 24, fontWeight: FontWeight.w600),),
+            const ProductComponent()
+          ],
+        ),
+      ),
+    );
+  }
+}
