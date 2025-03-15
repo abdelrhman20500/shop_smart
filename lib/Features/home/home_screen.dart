@@ -6,6 +6,7 @@ import 'package:shop_smart/Features/home/Settings_tab/presentation/view/settings
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+  static const String routeName ="HomeScreen";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
