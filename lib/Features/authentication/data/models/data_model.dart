@@ -2,24 +2,15 @@ import 'package:shop_smart/Features/authentication/domain/entities/data_entity.d
 
 class DataModel extends DataEntity {
   const DataModel({
-    required int id,
-    required String name,
-    required String email,
-    required String phone,
-    required String image,
-    int? points,
-    double? credit,
-    required String token,
-  }) : super(
-    id: id,
-    name: name,
-    email: email,
-    phone: phone,
-    image: image,
-    points: points,
-    credit: credit,
-    token: token,
-  );
+    required super.id,
+    required super.name,
+    required super.email,
+    required super.phone,
+    required super.image,
+    super.points,
+    super.credit,
+    required super.token,
+  });
 
   factory DataModel.fromJson(Map<String, dynamic> json) {
     return DataModel(
@@ -29,7 +20,7 @@ class DataModel extends DataEntity {
       phone: json['phone'],
       image: json['image'],
       points: json['points'],
-      credit: json['credit'],
+      credit: (json['credit'] is int) ? (json['credit'] as int).toDouble() : json['credit']?.toDouble(),
       token: json['token'],
     );
   }
