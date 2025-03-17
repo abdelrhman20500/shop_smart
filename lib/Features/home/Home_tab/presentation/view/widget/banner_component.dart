@@ -39,7 +39,7 @@ class BannerComponent extends StatelessWidget {
                       viewportFraction: 1,
                       enableInfiniteScroll: true,
                       reverse: false,
-                      autoPlay: true,
+                      autoPlay: false,
                       autoPlayInterval: const Duration(seconds: 5),
                       autoPlayAnimationDuration: const Duration(seconds: 2),
                       autoPlayCurve: Curves.fastOutSlowIn,
