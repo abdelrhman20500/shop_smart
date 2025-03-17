@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/data_sources/home_remote_data_source.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/repos/home_repo_impl.dart';
-import 'package:shop_smart/Features/home/Home_tab/domain/use_cases/banner_use_case.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/use_cases/product_use_case.dart';
-import 'package:shop_smart/Features/home/Home_tab/presentation/view_manager/banner_cubit/banner_cubit.dart';
 import 'package:shop_smart/Features/home/Home_tab/presentation/view_manager/product_cubit/product_cubit.dart';
 
 class Test extends StatefulWidget {
