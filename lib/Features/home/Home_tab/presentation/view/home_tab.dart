@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/banner_component.dart';
 import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/build_home_search.dart';
-import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/categories_component.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/category_bloc_builder.dart';
 import 'package:shop_smart/Features/home/Home_tab/presentation/view/widget/product_bloc_builder.dart';
 
 class HomeTab extends StatelessWidget {
@@ -23,7 +23,7 @@ class HomeTab extends StatelessWidget {
             SizedBox(height: height*0.02,),
             const Text("Categories", style:
             TextStyle(fontSize: 24, fontWeight: FontWeight.w600),),
-            const CategoriesComponent(),
+            const CategoryBlocBuilder(),
             SizedBox(height: height*0.02,),
             const Text("New Products", style:
             TextStyle(fontSize: 24, fontWeight: FontWeight.w600),),

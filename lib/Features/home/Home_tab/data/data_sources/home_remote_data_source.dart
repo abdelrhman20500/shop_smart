@@ -71,7 +71,7 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
           // "Authorization":token,
         })).get(ApiConstant.categories);
     if (response.statusCode == 200) {
-      // print(response);
+      print(response);
       return List<CategoryModel>.from((response.data["data"]["data"] as List)
           .map((e) => CategoryModel.fromJson(e)));
     } else {
