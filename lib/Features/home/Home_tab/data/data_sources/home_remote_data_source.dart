@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:shop_smart/Core/network/api_constant.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/models/category_model.dart';
+import 'package:shop_smart/Features/home/Home_tab/data/models/product_details_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/models/product_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_entity.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/repos/home_repo.dart';
@@ -14,7 +15,7 @@ abstract class HomeBaseRemoteDataSource {
   Future<List<ProductEntity>> getProductData();
   Future<List<CategoryModel>> getCategoryData();
   Future<List<ProductModel>> getCategoryId(CategoryIdParameters parameters);
-
+  Future<ProductDetailsModel> getProductDetails(ProductDetailsParameters parameters);
 }
 
 class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
@@ -98,6 +99,27 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
       // print(response);
       return List<ProductModel>.from((response.data["data"]["data"] as List)
           .map((e) => ProductModel.fromJson(e)));
+    } else {
+      {
+        throw ServerException(
+            errorMessageModel: ErrorMessageModel.fromJson(response.data));
+      }
+    }
+  }
+
+  @override
+  Future<ProductDetailsModel> getProductDetails(ProductDetailsParameters parameters)async{
+    final response = await Dio(BaseOptions(
+        baseUrl: ApiConstant.baseUrl,
+        receiveDataWhenStatusError: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'lang': 'en',
+          // "Authorization":token,
+        })).get(ApiConstant.getProductDetails(parameters.productId));
+    if (response.statusCode == 200) {
+      print(response);
+      return ProductDetailsModel.fromJson(response.data["data"]);
     } else {
       {
         throw ServerException(
