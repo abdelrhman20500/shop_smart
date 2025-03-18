@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view/product_by_category_id.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key,required this.title,required this.image,required this.id,});
@@ -14,7 +15,10 @@ class CategoryItem extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+        ProductByCategoryId(productId: id,titleCategory: title,)));
+      },
       child: Container(
         width: width * 0.3,
         decoration: BoxDecoration(

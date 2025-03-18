@@ -42,4 +42,14 @@ class HomeRepoImpl extends HomeRepo{
     }
   }
 
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getCategoryId(CategoryIdParameters parameters)async{
+    try {
+      final result = await homeBaseRemoteDataSource.getCategoryId(parameters);
+      return right(result);
+    } on ServerException catch (failure) {
+      return Left(ServerFailure(failure.errorMessageModel.message));
+    }
+  }
+
 }
