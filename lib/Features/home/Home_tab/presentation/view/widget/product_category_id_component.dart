@@ -22,6 +22,7 @@ class ProductCategoryIdComponent extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(4.0),
           child: ProductItem(
+            id: model[index].id,
             image: model[index].image,
             name: model[index].name,
             description: model[index].description,

@@ -5,7 +5,6 @@ import 'package:shop_smart/Features/home/Home_tab/data/models/product_details_mo
 import 'package:shop_smart/Features/home/Home_tab/data/models/product_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_entity.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/repos/home_repo.dart';
-
 import '../../../../../Core/error/exception.dart';
 import '../../../../../Core/network/error_message_model.dart';
 import '../models/banner_model.dart';
@@ -118,7 +117,7 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
           // "Authorization":token,
         })).get(ApiConstant.getProductDetails(parameters.productId));
     if (response.statusCode == 200) {
-      print(response);
+      // print(response);
       return ProductDetailsModel.fromJson(response.data["data"]);
     } else {
       {
