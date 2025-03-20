@@ -3,6 +3,7 @@ import 'package:shop_smart/Core/network/api_constant.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/models/category_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/models/product_details_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/models/product_model.dart';
+import 'package:shop_smart/Features/home/Home_tab/data/models/search_model.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_entity.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/repos/home_repo.dart';
 import '../../../../../Core/error/exception.dart';
@@ -15,6 +16,7 @@ abstract class HomeBaseRemoteDataSource {
   Future<List<CategoryModel>> getCategoryData();
   Future<List<ProductModel>> getCategoryId(CategoryIdParameters parameters);
   Future<ProductDetailsModel> getProductDetails(ProductDetailsParameters parameters);
+  Future<List<SearchModel>> searchAboutItem(SearchParameters parameters);
 }
 
 class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
@@ -126,4 +128,33 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
       }
     }
   }
+
+  @override
+  Future<List<SearchModel>> searchAboutItem(SearchParameters parameters) async
+  {
+    final response = await Dio(BaseOptions(
+        receiveDataWhenStatusError: true,
+        baseUrl: ApiConstant.baseUrl,
+        headers:
+        {
+          'Content-Type': 'application/json',
+          'lang': 'en',
+          // "Authorization":token,
+        }
+    )).post(ApiConstant.search, data: {
+      'text': parameters.text,
+    } );
+    print(response);
+
+    if(response.data['status'])
+    {
+      print('Search  ********************************');
+      return List<SearchModel>.from((response.data['data']['data'] as List).map((e) => SearchModel.fromJson(e)));
+    }else
+    {
+      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+    }
+  }
+
+
 }

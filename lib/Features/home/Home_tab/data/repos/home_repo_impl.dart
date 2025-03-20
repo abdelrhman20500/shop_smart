@@ -8,6 +8,7 @@ import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_entity
 import 'package:shop_smart/Features/home/Home_tab/domain/repos/home_repo.dart';
 
 import '../../../../../Core/error/exception.dart';
+import '../../domain/entities/search_entity.dart';
 
 class HomeRepoImpl extends HomeRepo{
   final HomeBaseRemoteDataSource homeBaseRemoteDataSource;
@@ -63,4 +64,13 @@ class HomeRepoImpl extends HomeRepo{
     }
   }
 
+  @override
+  Future<Either<Failure, List<SearchEntity>>> searchAboutProduct(SearchParameters parameters)async{
+      try {
+        final result = await homeBaseRemoteDataSource.searchAboutItem(parameters);
+        return right(result);
+      } on ServerException catch (failure) {
+        return Left(ServerFailure(failure.errorMessageModel.message));
+      }
+  }
 }

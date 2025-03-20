@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/data_sources/home_remote_data_source.dart';
 import 'package:shop_smart/Features/home/Home_tab/data/repos/home_repo_impl.dart';
-import 'package:shop_smart/Features/home/Home_tab/domain/use_cases/product_details_use_case.dart';
-import 'package:shop_smart/Features/home/Home_tab/presentation/view_manager/product_details_cubit/product_details_cubit.dart';
+import 'package:shop_smart/Features/home/Home_tab/domain/use_cases/search_use_case.dart';
+import 'package:shop_smart/Features/home/Home_tab/presentation/view_manager/search_cubit/search_cubit.dart';
 
 class Test extends StatefulWidget {
   const Test({super.key});
@@ -25,8 +25,8 @@ class _TestState extends State<Test> {
   }
 
   void getData(){
-    var result=ProductDetailsCubit(ProductDetailsUseCase(HomeRepoImpl(homeBaseRemoteDataSource: 
-    HomeRemoteDataSource(),),),)..getProductDetails(productId: 52);
+    var result=SearchCubit(SearchUseCase(HomeRepoImpl(homeBaseRemoteDataSource: 
+    HomeRemoteDataSource(),),),)..searchProduct(query: "a");
     print(result);
   }
 }

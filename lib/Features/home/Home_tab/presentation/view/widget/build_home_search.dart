@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../search_screen.dart';
 import 'build_custom_search.dart';
 
 class BuildHomeSearch extends StatelessWidget {
@@ -12,7 +13,7 @@ class BuildHomeSearch extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              // showSearch(context: context, delegate: SearchScreen());
+              showSearch(context: context, delegate: SearchScreen());
             },
             child: const AbsorbPointer(
               child: BuildCustomSearch(name: "Search .....",iconData: Icons.search,),

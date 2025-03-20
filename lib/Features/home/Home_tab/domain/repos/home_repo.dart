@@ -5,6 +5,7 @@ import 'package:shop_smart/Features/home/Home_tab/domain/entities/banner_entity.
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/category_entity.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_details_entity.dart';
 import 'package:shop_smart/Features/home/Home_tab/domain/entities/product_entity.dart';
+import 'package:shop_smart/Features/home/Home_tab/domain/entities/search_entity.dart';
 
 abstract class HomeRepo{
   Future<Either<Failure, List<BannerEntity>>> getBanner();
@@ -12,6 +13,7 @@ abstract class HomeRepo{
   Future<Either<Failure, List<CategoryEntity>>> getCategory();
   Future<Either<Failure,List<ProductEntity>>> getCategoryId(CategoryIdParameters parameters);
   Future<Either<Failure,ProductDetailsEntity>> getProductDetails(ProductDetailsParameters parameters);
+  Future<Either<Failure,List<SearchEntity>>> searchAboutProduct(SearchParameters parameters);
 
 }
 
@@ -37,4 +39,16 @@ class ProductDetailsParameters extends Equatable
 
   @override
   List<Object?> get props => [productId];
+}
+
+/// Search Parameters...
+
+class SearchParameters extends Equatable
+{
+  final String text;
+
+  const SearchParameters({required this.text});
+
+  @override
+  List<Object?> get props => [text];
 }
